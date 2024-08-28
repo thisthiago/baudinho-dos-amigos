@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Tempo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+        p {
+            font-size: 1.5em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Estamos há:</h1>
+    <p id="contador">Calculando...</p>
+
+    <script>
+        function atualizarContador() {
+            const dataBase = new Date('2024-08-04T16:45:00');
+            const agora = new Date();
+
+            const diferenca = agora - dataBase;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById('contador').innerHTML = `Já fazem ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos.`;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); // Para exibir imediatamente ao carregar a página
+    </script>
+
+</body>
+</html>

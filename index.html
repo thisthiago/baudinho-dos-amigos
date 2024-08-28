@@ -9,23 +9,58 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+            color: #fff;
+        }
+        .blur-container {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px); /* Para compatibilidade com navegadores antigos */
         }
         h1 {
             font-size: 2em;
-            color: #333;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         p {
             font-size: 1.5em;
-            color: #555;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
 <body>
 
-    <h1>E o Baudinho? Sai quando? 🤔:</h1>
-    <p id="contador">Calculando...</p>
+    <div class="blur-container">
+        <h1>E o Baudinho? Sai quando?</h1>
+        <h1> 🤔🤔🤔</h1>
+        <p id="contador">Calculando...</p>
+    </div>
 
     <script>
+const imagens = [
+            'url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGI0YWl0aG84cXU3NGJjajFlM2dxOGtneDhic2RnNGNqdnN5b2VnYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pqWkPQ3eBYkxC8uXp1/giphy.webp")',
+            'url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWF6ODlpcGdldXNpOXU2MXQ0eDhiNjMwY2V5bHF1NDMyc2Z1aWNydCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qbA7C7tOUFtKdFHSpg/giphy.webp")',
+            'url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDVpdW82MXlmcHppdDdoN21oZXJvMmpwMXUxbDhqeHM5emZjOGgxZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XkqhC0gtty9AXBay5x/giphy.webp")',
+            // Adicione mais URLs de imagens aqui
+        ];
+
+
+        let indiceAtual = 0;
+
+        function mudarImagemDeFundo() {
+            document.body.style.backgroundImage = imagens[indiceAtual];
+            indiceAtual = (indiceAtual + 1) % imagens.length; // Volta ao início da lista após a última imagem
+        }
+
+        setInterval(mudarImagemDeFundo, 5000); // Muda a cada 5 segundos
+        mudarImagemDeFundo(); // Chama a função imediatamente para exibir a primeira imagem
+
         function atualizarContador() {
             const dataBase = new Date('2024-08-04T16:45:00');
             const agora = new Date();
